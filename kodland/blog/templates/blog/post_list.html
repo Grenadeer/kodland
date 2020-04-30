@@ -10,10 +10,10 @@
         <div class="section">
             <div>
                 <ul>
-                    <li>Новый</li>
-                    <li>25 лайков</li>
-                    <li>25 комментариев</li>
-                    <li>25 просмотров</li>
+                    <li>NEW</li>
+                    <li>25 <img src="{% static 'img/like.png' %}" alt="лайков"></li>
+                    <li>25 <img src="{% static 'img/comment.png' %}" alt="комментариев"></li>
+                    <li>25 <img src="{% static 'img/view.png' %}" alt="просмотров"></li>
                 </ul>
             </div>
             {% with object_list|first as post %}
@@ -54,6 +54,7 @@
             </div>
 
         </div>
+
     </div>
 
 {% endblock %}

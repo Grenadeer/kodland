@@ -8,7 +8,7 @@ from .models import Post
 urlpatterns = [
     path('post/', ListView.as_view(
         model=Post,
-        queryset=Post.objects.all()[:10]
+        queryset=Post.objects.all().order_by('-create_date')[:10]
     ), name='blog_post_list'),
     path('post/create/', CreateView.as_view(
         model=Post

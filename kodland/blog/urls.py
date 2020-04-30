@@ -8,10 +8,11 @@ from .models import Post
 urlpatterns = [
     path('post/', ListView.as_view(
         model=Post,
-    ), name='post_list'),
+        queryset=Post.objects.all()[:10]
+    ), name='blog_post_list'),
     path('post/create/', CreateView.as_view(
         model=Post
-    ), name='post_create'),
+    ), name='blog_post_create'),
 
     path('', RedirectView.as_view(url='/post/'), name='index'),
 ]

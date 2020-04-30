@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+    <!--Import Google Icon Font-->
+<!--    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo left">
+                <img class="materialboxed" src="{% static 'img/logo_kodland.png' %}" width="190px" height="72.28px">
+            </a>
+            <ul class="left">
+                <li><a href="{% url 'blog_post_list' %}">Блог</a></li>
+            </ul>
+            
+            <ul class="right">
+                <li><a href="#"><img src="{% static 'img/email.png' %}" alt="e-mail"></a></li>
+                <li><a href="#"><img src="{% static 'img/Group.png' %}" alt="Group"></a></li>
+                <li><a href="#"><img src="{% static 'img/logout.png' %}" alt="Logout"></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>

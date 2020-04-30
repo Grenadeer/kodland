@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    Пробный шаблон
-</body>
-</html>
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="section">
+            <div>
+                <ul>
+                    <li>Новый</li>
+                    <li>25 лайков</li>
+                    <li>25 комментариев</li>
+                    <li>25 просмотров</li>
+                </ul>
+            </div>
+            {% with object_list|first as post %}
+            <h5>{{ post.title }}</h5>
+            <p class="light">{{ post.text }}</p>
+            <a class="btn" href="#">Читать</a>
+            {% endwith %}
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <div class="row">
+                <div clas="col s12">
+                    <p>Другие статьи</p>
+                </div>
+                <div class="col s12">
+                    <img src="{% static 'img/filter.png' %}">
+                </div>
+            </div>
+
+            <div class="row">
+                {% for post in object_list|slice:"1:4" %}
+                {% include 'blog/inc_post_box.html' %}
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                {% for post in object_list|slice:"4:7" %}
+                {% include 'blog/inc_post_box.html' %}
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                {% for post in object_list|slice:"7:10" %}
+                {% include 'blog/inc_post_box.html' %}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

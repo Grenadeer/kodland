@@ -128,3 +128,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+/kodland/media/post_images/

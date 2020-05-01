@@ -1,17 +1,25 @@
 
 {% load static %}
 
-    <div class="col s4">
-        <div class="card">
+    <div class="col s12 m6 l4">
+        <div class="card small">
             <p class="light">{{ post.create_date }}</p>
-            <img src="">
-            <div class="card-content center">
-                <h5>{{ post.title }}</h5>
+            <div class="center">
+                <img
+                        {% if post.image %}
+                        src="{% get_media_prefix %}{{ post.image }}"
+                        {% else %}
+                        src="{% static 'img/post_empty.png' %}"
+                        {% endif %}
+                        width="217" height="112">
             </div>
-            <div class="card-action">
-                <a class="left" href="#">25 <img src="{% static 'img/like.png' %}" alt="лайков"></a>
-                <a class="center" href="#">25 <img src="{% static 'img/comment.png' %}" alt="комментариев"></a>
-                <a class="right" href="#">25 <img src="{% static 'img/view.png' %}" alt="просмотров"></a>
+            <div class="card-content center">
+                <h6>{{ post.title }}</h6>
+            </div>
+            <div class="card-action center">
+                <a href="#">25 <img src="{% static 'img/like.svg' %}" height="14" alt="лайков"></a>
+                <a href="#">25 <img src="{% static 'img/comment.svg' %}" height="14" alt="комментариев"></a>
+                <a href="#">25 <img src="{% static 'img/view.svg' %}" height="14" alt="просмотров"></a>
             </div>
         </div>
     </div>

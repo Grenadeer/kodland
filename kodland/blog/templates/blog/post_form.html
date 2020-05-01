@@ -1,0 +1,69 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+
+        <h5>Добавить статью</h5>
+
+        <form enctype="multipart/form-data" action method="POST" novalidate>
+
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="input-field col s7 m7 l7">
+                    <input type="text" class="validate" name="title" id="id_title" placeholder="Введите название статьи">
+                </div>
+                <div class="col s5 m5 l5" type="submit" name="action">
+                    <input class="btn" type="submit" value="Опубликовать">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s7 m7 l7">
+                    <!-- <textarea type="text" class="validate" name="text" id="id_text" placeholder="" /> -->
+                    <textarea name="text" id="id_text" style="resize: none; height: 250px;"></textarea>
+                </div>
+                <div class="col s5 m5 l5">
+                    <div class="card-panel center">
+                        <h6>Загрузить изображение</h6>
+                        <div id="image_label_id">
+                            <label for="image_input_id" class="btn">Выберите файл</label>
+                        </div>
+                        <input type="file" class="input-image" name="image"
+                               accept="image/*" id="image_input_id"
+                               onchange="showImage(this)">
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function showImage(fileInput) {
+                    var files = fileInput.files;
+                    if (files.length == 1) {
+                        var file = files[0];
+                        var imageType = /image.*/;
+                        if (file.type.match(imageType)) {
+                            var container = document.getElementById("image_label_id");
+                            container.innerHTML = '<label for="image_input_id"><img id="image_preview" src="" alt="image" width="217" height="112" /></label>';
+                            var img = document.getElementById("image_preview");
+                            img.file = file;
+                            var reader = new FileReader();
+                            reader.onload = (function(aImg) {
+                                return function(e) {
+                                    aImg.src = e.target.result;
+                                };
+                            })(img);
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                }
+            </script>
+
+        </form>
+    </div>
+
+{% endblock %}

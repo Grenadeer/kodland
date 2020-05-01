@@ -11,7 +11,13 @@ urlpatterns = [
         queryset=Post.objects.all().order_by('-create_date')[:10]
     ), name='blog_post_list'),
     path('post/create/', CreateView.as_view(
-        model=Post
+        model=Post,
+        fields=[
+            'title',
+            'text',
+            'image',
+        ],
+        success_url = '/',
     ), name='blog_post_create'),
 
     path('', RedirectView.as_view(url='/post/'), name='index'),

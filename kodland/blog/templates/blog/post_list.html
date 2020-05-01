@@ -8,17 +8,19 @@
     <div class="container">
 
         <div class="section">
-            <div>
-                <ul>
-                    <li>NEW</li>
-                    <li>25 <img src="{% static 'img/like.png' %}" alt="лайков"></li>
-                    <li>25 <img src="{% static 'img/comment.png' %}" alt="комментариев"></li>
-                    <li>25 <img src="{% static 'img/view.png' %}" alt="просмотров"></li>
-                </ul>
+            <div class="row">
+                <span>NEW</span>
+                <span>25 <img src="{% static 'img/like.svg' %}" height="12" alt="лайков"></span>
+                <span>25 <img src="{% static 'img/comment.svg' %}" height="12" alt="комментариев"></span>
+                <span>25 <img src="{% static 'img/view.svg' %}" height="12" alt="просмотров"></span>
             </div>
             {% with object_list|first as post %}
-            <h5>{{ post.title }}</h5>
-            <p class="light">{{ post.text }}</p>
+            <div class="row">
+                <h5>{{ post.title }}</h5>
+            </div>
+            <div class="row">
+                <p class="col s6 m6 l6 light">{{ post.text }}</p>
+            </div>
             <a class="btn" href="#">Читать</a>
             {% endwith %}
         </div>
@@ -27,11 +29,11 @@
 
         <div class="section">
             <div class="row">
-                <div clas="col s12">
-                    <p>Другие статьи</p>
+                <div class="col s11 m11 l11">
+                    <h4>Другие статьи</h4>
                 </div>
-                <div class="col s12">
-                    <img src="{% static 'img/filter.png' %}">
+                <div class="col s1 m1 l1">
+                    <img src="{% static 'img/filter.svg' %}" height="38" width="38">
                 </div>
             </div>
 
